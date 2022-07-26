@@ -10,6 +10,10 @@ List<ArticleDto> articles = (List<ArticleDto>)request.getAttribute("articles");
 
 <ul>
     <% for ( ArticleDto article : articles ) { %>
-    <li><%=article.getId()%>. <%=article.getTitle()%></li>
+    <li>
+    <a href=/usr/article/detail/<%=article.getId()%>><%=article.getId()%>. <%=article.getTitle()%></a>
+    </li>
     <% } %>
 </ul>
+
+<a href=/usr/article/write/free>게시글 쓰기</a>

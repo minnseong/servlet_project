@@ -81,4 +81,15 @@ public class Rq {
     public String getMethod() {
         return request.getMethod();
     }
+
+    public String getFirstPathVariable() {
+        String[] bits = request.getRequestURI().split("/");
+        return bits[4];
+    }
+
+    public String getActionPath() {
+        String[] bits = request.getRequestURI().split("/");
+
+        return "/%s/%s/%s".formatted(bits[1], bits[2], bits[3]);
+    }
 }
