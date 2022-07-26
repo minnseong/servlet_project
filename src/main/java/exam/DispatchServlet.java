@@ -32,7 +32,18 @@ public class DispatchServlet extends HttpServlet {
                 memberController.showLogin(rq);
                 break;
         }
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Rq rq = new Rq(req, resp);
+        ArticleController articleController = new ArticleController();
 
+        String url = req.getRequestURI();
+        switch (url) {
+            case "/usr/article/write/free":
+                articleController.doWrite(rq);
+                break;
+        }
     }
 }
