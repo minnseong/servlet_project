@@ -3,6 +3,7 @@ package exam.article;
 import exam.article.dto.ArticleDto;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ArticleRepository {
@@ -32,5 +33,27 @@ public class ArticleRepository {
                 return articleDto;
         }
         return null;
+    }
+
+    public void delete(Long id) {
+        Iterator it = datum.iterator();
+
+        while (it.hasNext()) {
+            ArticleDto article = (ArticleDto) it.next();
+            if (article.getId() == id) {
+                it.remove();
+                break;
+            }
+        }
+    }
+
+    public void update(long id, String title, String body) {
+        for (ArticleDto articleDto : datum) {
+            if (articleDto.getId() == id) {
+                articleDto.setTitle(title);
+                articleDto.setBody(body);
+                break;
+            }
+        }
     }
 }

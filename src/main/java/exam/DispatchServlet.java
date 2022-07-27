@@ -21,11 +21,10 @@ public class DispatchServlet extends HttpServlet {
         ArticleController articleController = new ArticleController();
 
         String url = req.getRequestURI();
-        String firstPathVariable = rq.getFirstPathVariable();
 
         switch (rq.getActionPath()) {
             case "/usr/article/detail":
-                articleController.showDetail(rq, Long.valueOf(firstPathVariable));
+                articleController.showDetail(rq, rq.getPathVariable(4));
                 break;
             case "/usr/article/list":
                 articleController.showList(rq);
@@ -35,6 +34,12 @@ public class DispatchServlet extends HttpServlet {
                 break;
             case "/usr/member/login":
                 memberController.showLogin(rq);
+                break;
+            case "/usr/article/delete":
+                articleController.deleteArticle(rq, rq.getPathVariable(5));
+                break;
+            case "/usr/article/modify":
+                articleController.showModifyForm(rq, rq.getPathVariable(5));
                 break;
         }
     }
@@ -48,6 +53,9 @@ public class DispatchServlet extends HttpServlet {
         switch (rq.getActionPath()) {
             case "/usr/article/write":
                 articleController.doWrite(rq);
+                break;
+            case "/usr/article/modify":
+                articleController.doModify(rq, rq.getPathVariable(5));
                 break;
         }
     }

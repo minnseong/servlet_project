@@ -82,9 +82,9 @@ public class Rq {
         return request.getMethod();
     }
 
-    public String getFirstPathVariable() {
+    public Long getPathVariable(int idx) {
         String[] bits = request.getRequestURI().split("/");
-        return bits[4];
+        return Long.valueOf(bits[idx]);
     }
 
     public String getActionPath() {
