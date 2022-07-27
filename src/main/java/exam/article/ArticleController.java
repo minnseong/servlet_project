@@ -4,7 +4,6 @@ package exam.article;
 import exam.Rq;
 import exam.article.dto.ArticleDto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleController {

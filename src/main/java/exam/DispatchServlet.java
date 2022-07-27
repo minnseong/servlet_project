@@ -20,11 +20,9 @@ public class DispatchServlet extends HttpServlet {
         MemberController memberController = new MemberController();
         ArticleController articleController = new ArticleController();
 
-        String url = req.getRequestURI();
-
         switch (rq.getActionPath()) {
             case "/usr/article/detail":
-                articleController.showDetail(rq, rq.getPathVariable(4));
+                articleController.showDetail(rq, rq.getPathVariable(5));
                 break;
             case "/usr/article/list":
                 articleController.showList(rq);
@@ -49,7 +47,6 @@ public class DispatchServlet extends HttpServlet {
         Rq rq = new Rq(req, resp);
         ArticleController articleController = new ArticleController();
 
-        String url = req.getRequestURI();
         switch (rq.getActionPath()) {
             case "/usr/article/write":
                 articleController.doWrite(rq);

@@ -1,24 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="exam.article.dto.ArticleDto" %>
+<%@ page import="exam.article.dto.ArticleDto"%>
 
 <%
 ArticleDto article = (ArticleDto)request.getAttribute("article");
 %>
 
-<h1>게시물 상세페이지</h1>
+<%@ include file="../common/head.jspf"%>
 
-<div>
-    <% if ( article != null ) { %>
-        <div>
-            ID : <%=article.getId()%>
-        </div>
-        <div>
-            TITLE : <%=article.getTitle()%>
-        </div>
-        <div>
-            BODY : <%=article.getBody()%>
-        </div>
-    <% } %>
-</div>
+<section>
+    <div class="container px-3 mx-auto">
+        <h1 class="font-bold text-lg">게시물 상세페이지</h1>
 
-<a href=/usr/article/list/free>게시글 목록</a>
+        <div>
+            <% if ( article != null ) { %>
+                <div>
+                    ID : <%=article.getId()%>
+                </div>
+                <div>
+                    TITLE : <%=article.getTitle()%>
+                </div>
+                <div>
+                    BODY : <%=article.getBody()%>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</section>
+
+<%@ include file="../common/foot.jspf"%>

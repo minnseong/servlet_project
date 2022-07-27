@@ -5,6 +5,7 @@ import exam.article.dto.ArticleDto;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class ArticleRepository {
 
@@ -13,7 +14,15 @@ public class ArticleRepository {
 
     static {
         datum = new ArrayList<>();
-        lastId = 0;
+        lastId = 10;
+
+        makeTestData();
+    }
+
+    private static void makeTestData() {
+        IntStream.rangeClosed(1, 10).forEach(id -> {
+            datum.add(new ArticleDto(id, "제목" + id, "내용 " + id));
+        });
     }
 
     public long write(String title, String body) {
