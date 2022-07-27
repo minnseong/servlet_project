@@ -33,9 +33,6 @@ public class DispatchServlet extends HttpServlet {
             case "/usr/member/login":
                 memberController.showLogin(rq);
                 break;
-            case "/usr/article/delete":
-                articleController.deleteArticle(rq, rq.getPathVariable(5));
-                break;
             case "/usr/article/modify":
                 articleController.showModifyForm(rq, rq.getPathVariable(5));
                 break;
@@ -53,6 +50,9 @@ public class DispatchServlet extends HttpServlet {
                 break;
             case "/usr/article/modify":
                 articleController.doModify(rq, rq.getPathVariable(5));
+                break;
+            case "/usr/article/delete":
+                articleController.deleteArticle(rq, rq.getPathVariable(5));
                 break;
         }
     }

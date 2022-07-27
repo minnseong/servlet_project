@@ -92,4 +92,36 @@ public class Rq {
 
         return "/%s/%s/%s".formatted(bits[1], bits[2], bits[3]);
     }
+
+    public void replace(String uri, String msg) {
+        if (msg != null && msg.trim().length() > 0) {
+            appendBody("""
+                     <script>
+                     alert("%s");
+                     </script>
+                     """.formatted(msg));
+        }
+
+        appendBody("""
+                 <script>
+                 location.replace("%s");
+                 </script>
+                 """.formatted(uri));
+    }
+
+    public void historyBack(String msg) {
+        if (msg != null && msg.trim().length() > 0) {
+            appendBody("""
+                     <script>
+                     alert("%s");
+                     </script>
+                     """.formatted(msg));
+        }
+
+        appendBody("""
+                 <script>
+                 history.back();
+                 </script>
+                 """);
+    }
 }
